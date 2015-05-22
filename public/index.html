@@ -1,44 +1,36 @@
 <!DOCTYPE html>
-<html ng-app="skillTrade">
-
+<html lang="en" ng-app="skillTrade">
 <head>
-	<title>SKILLTRADE</title>
-	<link rel="stylesheet" href="index/index.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Parallax Template - Materialize</title>
 
+  <!-- CSS  -->
+  <link href="index/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="index/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-
 <body ng-controller="indexCtrl">
-	<nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+    <ng-view></ng-view>  
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    </div>
-  </nav>
-
-	<button><a href='/#/login'>login page</a></button>
-
-<ng-view></ng-view>
-
-<!-- Angular -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
-
-<!-- MaterialCss & Jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-
-<!-- controllers  -->
-<script src="app.js"></script>
-<script src="login/loginCtrl.js"></script>
-<script src="login/loginService.js"></script>
-<script src="index/indexCtrl.js"></script>
-</body>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="index/js/materialize.js"></script>
+  <script src="index/js/init.js"></script>
+  
+  <!-- Angular -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
+  
+  <!--js files -->
+  <script src="app.js"></script>
+  <script src="index/indexCtrl.js"></script>
+  <!--login !-->
+  <script src="login/loginCtrl.js"></script>
+  <script src="login/loginService.js"></script>
+  <!--dashboard!-->
+  <script src="dashboard/dashCtrl.js"></script>
+   <script src="dashboard/dashService.js"></script>
+  <!--search !-->
+  <script src="search/searchCtrl.js"></script>
+  </body>
 </html>

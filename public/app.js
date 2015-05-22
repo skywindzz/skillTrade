@@ -4,6 +4,7 @@ app.config(function($routeProvider){
 	$routeProvider
 
 	.when('/', {
+		templateUrl:'index/homeTemp.html',
 		controller: 'indexCtrl'
 	})
 
@@ -12,8 +13,18 @@ app.config(function($routeProvider){
 		controller: 'loginCtrl'
 	})
 
-	.otherwise({
-		redirectTo: '/'
+	.when('/dash', {
+		templateUrl : 'dashboard/dash.html',
+		controller : 'dashCtrl' 
+	})
+
+	.when('/search', {
+		templateUrl : 'search/search.html',
+		controller : 'searchCtrl'
+	})
+
+	.otherwise('/', {
+		redirectTo: '/index/homeTemp.html'
 
 	})
 })

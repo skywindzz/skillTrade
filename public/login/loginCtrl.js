@@ -1,6 +1,7 @@
 var app = angular.module('skillTrade');
 
 app.controller('loginCtrl', function($scope, loginService){
+	$scope.test = "test";
 	//scope declaration
 
 	$scope.email;

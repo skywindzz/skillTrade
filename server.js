@@ -4,18 +4,25 @@ var express = require('express');
 var session = require('express-session');
 var passport = require('passport');
 var facebookStrategy = require('passport-facebook');
+
 //check out facebook strategy and enter here
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var mongo = require('mongo');
 var mongoose = require('mongoose');
 
 //others
 var port = 8888;
 var app = express();
 
+//mongodb
+var mongoUri = 'mongodb://localhost:27017/skilltrade';
+
+//controllersß
+var UserCtrl = require('./app/controllers/userCtrl');
+
 //middleware
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 app.use(cors());
 
 //passport setups
@@ -64,6 +71,16 @@ app.get('/auth/facebook/callback',
     res.redirect('/'); //now it redirect to home but I want to redirect it to user dashboard,ask mentor
   });
 
+//endpoint for User op
+app.get('api/users', UserCtrl.get);
+app.post('/api/users', UserCtrl.post);
+app.put('/api/users/:id', UserCtrl.update);
+app.delete('/api/users/:id', UserCtrl.delete);
+
+mongoose.connect(mongoUri);
+mongoose.connection.once('open', function() {
+  console.log('Connected to MongoDB at ', mongoUri);
+});
 
 app.listen(port, function(){
 	console.log('port running at ' + port);
