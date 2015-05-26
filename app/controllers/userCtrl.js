@@ -1,5 +1,5 @@
 var User = require('../models/User');
-
+  
 module.exports = {
 
 	get: function(req, res) {
@@ -13,7 +13,7 @@ module.exports = {
 
 
 	post: function(req, res) {
-		console.log('req.body', req.body)
+		console.log(req.body);
 		var newUser = new User(req.body);
 		newUser.save(function(err, result){
 			if(err) return res.status(500).send(err);
@@ -33,5 +33,21 @@ module.exports = {
 			if(err) return res.status(500).send(err);
 			res.send(result);
 		});
+	},
+
+	login: function(req, res) {
+		User.findOne({email: req.query.email}, function(err, user){
+			console.log(user);
+			if(err) return res.status(500).end(err);
+			if(user){
+
+				user.comparePassword(req.query.password, function(err, isMatch){
+					console.log(isMatch);
+					if (isMatch) {
+					res.redirect('/#/dash');
+				}
+				})
+			}
+		})
 	}
 }

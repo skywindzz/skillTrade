@@ -1,5 +1,7 @@
  
-<div class="row">
+<link rel="stylesheet" type="text/css" href="/dashboard/dash.css">
+
+<div ng-controller="dashCtrl">
 
 <nav class="yellow lighten-2 col s12"  role="navigation">
     <div class="nav-wrapper container">
@@ -15,17 +17,23 @@
     </div>
 </nav>
 
-<div class="col s2">
-  
-</div>
-  
-<div class="col s10">
+<div class="row">
+<div class="col s3 card medium left">
+  <h4 class="center">Profile</h4>
+    <div class="userimage" style="background-image: url('path/to/image');"></div> <!--allow user to upload pic, save on server and display" -->
 
-
+    <ul ng-repeat="user in username"> 
+       <li class="center">Hello, {{user.first}} {{user.last}}</li>
+    </ul>
 </div>
 
-<div class="col s3">
-  
+<div class="col s4 card">
+hello fjksjfsjfd;afjkasfd;sajfadjfksad;fjasjfsajfsa;lfjl;asfjkfjdasjfsjfd;asfjkasjfasjdfjsa;lfjsfjfsdfhsldf
+</div>
+
+<div class="col s4 card right">
+  hello fjksjfsjfd;afjkasfd;sajfadjfksad;fjasjfsajfsa;lfjl;asfjkfjdasjfsjfd;asfjkasjfasjdfjsa;lfjsfjfsdfhsldf
 
 </div>
 </div>
+

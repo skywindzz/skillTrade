@@ -14,8 +14,11 @@ app.config(function($routeProvider){
 	})
 
 	.when('/dash', {
-		templateUrl : 'dashboard/dash.html',
-		controller : 'dashCtrl' 
+		templateUrl : 'dashboard/dash.html', // praram user id once log in
+		controller : 'dashCtrl'
+		// resolve : {
+		// 	//add method execute before going to this route grab user object 
+		// } 
 	})
 
 	.when('/search', {
