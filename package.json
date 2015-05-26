@@ -8,5 +8,26 @@
   },
   "author": "Anthony",
   "license": "ISC",
-  "description": "skilltrade app"
+  "description": "skilltrade app",
+  "dependencies": {
+    "bcrypt": "^0.8.3",
+    "body-parser": "^1.12.4",
+    "express": "^4.12.4",
+    "express-session": "^1.11.2",
+    "mongoose": "^4.0.3",
+    "cors": "^2.6.0",
+    "passport-facebook": "^2.0.0",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "mongo": "^0.1.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skywindzz/skillTrade.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skywindzz/skillTrade/issues"
+  },
+  "homepage": "https://github.com/skywindzz/skillTrade#readme"
 }
