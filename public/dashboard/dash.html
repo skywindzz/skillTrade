@@ -33,20 +33,16 @@
 
 <!-- SKILL SECTION !-->
 
-     <ul class="collapsible  col s4 card" data-collapsible="accordion">
+<ul class="collapsible card col s4" data-collapsible="accordion">
     <li>
       <div class="collapsible-header active"><i class="mdi-image-filter-drama"></i>Skills</div>
-      <div class="collapsible-body">
-        <ul class="row" ng-repeat="user in users">
-          <div ng-repeat="skill in user.skills">
-            <li> Skill : {{skill.name}} </br> 
-                 Level : {{skill.level}}
-            </li>
-          </div>
-        </ul>
-
-      </div>
+        <div class="collapsible-body">
+        <div class="center card" ng-repeat="skills in user.skills">
+              <h5>Skill : {{skills.name}}</h5>  
+              <h5>Level : {{skills.level}} </h5>        
+        </div></br>
     </li>
+
     <li>
       <div class="collapsible-header"><i class="mdi-maps-place"></i>Add Skill</div>
       <div class="collapsible-body">
@@ -76,10 +72,9 @@
        </div>
         <button type="submit" ng-click="addSkill(skillsName, skillsLevel, skillsDescription)" class="skillbutton btn-floating right btn-small waves-effect waves-light blue"><i class="mdi-content-add"></i></button>
       </form>
-
       </div>
     </li>
-  </ul>
+</ul>
     
       
 
