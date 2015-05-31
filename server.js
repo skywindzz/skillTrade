@@ -3,7 +3,7 @@
 var express = require('express');
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local');
+var LocalStrategy = require('passport-local').Strategy;
 var User = require('./app/models/User');
 
 //check out facebook strategy and enter here
@@ -28,59 +28,80 @@ app.use(cors());
 
 //passport setups
 app.use(session({
-	secret:'hailmary'
+  secret:'hailmary'
 }));
+
+app.use(passport.initialize()); //!!alert you need to initialize first before session!!
+app.use(passport.session());
+
+
+
 
 //passport local strategy 
 passport.use(new LocalStrategy({
-	usernameField: 'email',
-  passwordField: 'password'
+	usernameField: 'email'
   },
   function(email, password, done) {
-    User.findOne({ 'user.email' : email  }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (!user.verifyPassword(password)) { return done(null, false); }
-       console.log("user in passport.use", user);
-      return done(null, user);
-         });
+    User.findOne({ email : email  }, function (err, user) {
+      if(!user) {
+        done(new Error('User doesn\'t exist'));
+      }
+      user.comparePassword(password).then(function(doesMatch){
+        if (doesMatch) {
+          return done(null, user);
+        }
+        else {
+          done(new Error('please verify your password and try again'));
+        }
+      })
+   });
   }
 ));
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(function(user,done){
-	done(null, user)
+passport.serializeUser(function(user,done){  //needed 
+  done(null, user._id)
 });
 
-passport.deserializeUser(function(obj, done){
-	done(null, obj)
-});
+passport.deserializeUser(function(id, done){  // changes needed hereß
+  User.findById(id, function(err, user) {
+    done(null, user);
+  });
+})
 
 var requireAuth = function(req, res, next) {
 	if(!req.isAuthenticated()) {
-		return res.status(403).end();
+		return res.status(401).end();
 	}
 	return next();
 }
-
-
+ 
+app.get('/api/profile/:id', function (req, res){
+  console.log("Server.js", req.params.id)
+  User.findById(req.params.id, function(err, result){
+      console.log('userCtrl err', err);
+      if (err) return status(500).send(err);
+      res.send(result);
+    })  
+})
+//endpoint for getting user data after login
+app.get('/api/login/user', UserCtrl.getUser);
 
 //endpoint for User op
-// app.get('/api/users', UserCtrl.get);
-// app.post('/api/users', UserCtrl.post);
-// app.put('/api/users/:id', UserCtrl.update);
-// app.delete('/api/users/:id', UserCtrl.delete);
+app.get('/api/users', UserCtrl.get);
+app.post('/api/users', UserCtrl.post);
+app.put('/api/users/:id', UserCtrl.update);
+app.delete('/api/users/:id', UserCtrl.delete);
 
-// app.get('/login', UserCtrl.login)
-app.post('/api/login', 
-  passport.authenticate('local', { 
-    failureRedirect: '/login', 
-    sucessRedirect: '/dash'
-  })
-)
-  
+//endpoint for dashboard operations
+app.post('/api/users/skills', UserCtrl.addSkill);
+app.post('/api/users/message', UserCtrl.newMessage);
+app.post('/api/login/auth', 
+  passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
+  res.end();
+});
+
+//endpoint for search operations
+
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
@@ -107,7 +128,18 @@ app.listen(port, function(){
 //   },
 //   function(accessToken, refreshToken, profile, done) {
 //     console.log('profile', profile);
-//     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+//     User.findOne{ facebook.id : profile.id }, function (err, user) {
+        // if(!user) {
+        //   var user = new User();
+        //   user.facebook.id = profile.id;
+        //   user.save(function(err, new_user){
+        //     if(err){
+        //       console.log("can't create user", err);
+        //     }
+        //       done(null, new_user);
+        //   })
+        //   done(null,user);
+        // }
 //     console.log('err', err);
 //     console.log('user', user);  
 //       return done(err, user);
@@ -122,7 +154,7 @@ app.listen(port, function(){
 // app.get('/auth/facebook/callback',
 //   passport.authenticate('facebook', { failureRedirect: '/login' }),
 //     function(req, res) {
-//     res.redirect('./dashboard/dash.html');
+//     res.redirect('/#/dash');
 //   });
 
  -->

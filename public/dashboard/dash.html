@@ -1,39 +1,104 @@
  
 <link rel="stylesheet" type="text/css" href="/dashboard/dash.css">
 
-<div ng-controller="dashCtrl">
+<div>
 
+<!-- NAVBAR !-->
 <nav class="yellow lighten-2 col s12"  role="navigation">
     <div class="nav-wrapper container">
-      
         <a href="" class="collection-item blackfont">Dashboard</a>
-        <a id="logo-container" href="/#/" class="brand-logo center" >SkillTrade</a>
+
+        <a id="logo-container" href="/#/" class="brand-logo center">SkillTrade</a>
+
         <div class="right"><a href="/#/search" class="blackfont">Search</a></div>
-       
+
         <ul id="nav-mobile" class="side-nav">
-        <li><a href="/#/login">Login/Register</a></li>
-      </ul>
+          <li><a href="/#/login">Login/Register</a></li>
+        </ul>
+
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
 </nav>
 
-<div class="row">
-<div class="col s3 card medium left">
-  <h4 class="center">Profile</h4>
-    <div class="userimage" style="background-image: url('path/to/image');"></div> <!--allow user to upload pic, save on server and display" -->
+<!-- PROFILE !-->
 
-    <ul ng-repeat="user in username"> 
+<div class="row">
+  <div class="col s3 card medium left">
+    <h4 class="center">Profile</h4>
+    <img class="userimage responsive-img" src="https://lh3.googleusercontent.com/-PwaQQTIXjYY/AAAAAAAAAAI/AAAAAAAAAAA/CsAdrY7CRfk/photo.jpg"> 
+    <ul> 
        <li class="center">Hello, {{user.first}} {{user.last}}</li>
     </ul>
+  </div>
+
+<!-- SKILL SECTION !-->
+
+     <ul class="collapsible  col s4 card" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header active"><i class="mdi-image-filter-drama"></i>Skills</div>
+      <div class="collapsible-body">
+        <ul class="row" ng-repeat="user in users">
+          <div ng-repeat="skill in user.skills">
+            <li> Skill : {{skill.name}} </br> 
+                 Level : {{skill.level}}
+            </li>
+          </div>
+        </ul>
+
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="mdi-maps-place"></i>Add Skill</div>
+      <div class="collapsible-body">
+        <form>
+        <div class="input-field">
+        <input type="text" ng-model="skillsName"/>
+        <label id="Skill Name">Skill Name</label>
+        </div>
+        Skill Level : 
+        <div class="input-field vertical-align">
+          <input type="radio" name="group1" id="beginner" ng-model="skillsLevel" value="beginner"/>
+          <label for="beginner">beginner</label>
+        </div>
+        <div class="input-field">
+          <input type="radio" name="group1" id="intermediate" ng-model="skillsLevel" value="intermediate"/>
+          <label for="intermediate">Intermediate</label>
+        </div>
+        <div class="input-field">  
+          <input type="radio" name="group1" id="expert" ng-model="skillsLevel" value="expert"/>
+          <label for="expert">Expert</label>
+        </div>
+       </br> 
+
+       <div class="description input-field"> 
+              <textarea id="textarea1" class="materialize-textarea" ng-model="skillsDescription"></textarea>
+              <label for="textarea1" id="DetailDescription">Detail Description (Optional)</label>
+       </div>
+        <button type="submit" ng-click="addSkill(skillsName, skillsLevel, skillsDescription)" class="skillbutton btn-floating right btn-small waves-effect waves-light blue"><i class="mdi-content-add"></i></button>
+      </form>
+
+      </div>
+    </li>
+  </ul>
+    
+      
+
+<!-- MESSAGE SECTION !-->
+
+  <div class="col s4 card right">
+    <h4>messages</h4>
+    <div class="col s12 card center">
+      <div class="message input-field"> 
+              <textarea id="textarea2" class="materialize-textarea" ng-model="message"></textarea>
+              <label for="textarea2" id="message">Message to {{user.first}}</label>
+       </div>
+    </div>
+      <div class="footer">  
+      <!-- need to get sender's ID !-->
+        <button type="submit" ng-click="newMessage()" class="footer skillbutton btn-floating right btn-small waves-effect waves-light blue"><i class="mdi-content-add"></i></button>
+      </div>
+  </div>
+</div>
 </div>
 
-<div class="col s4 card">
-hello fjksjfsjfd;afjkasfd;sajfadjfksad;fjasjfsajfsa;lfjl;asfjkfjdasjfsjfd;asfjkasjfasjdfjsa;lfjsfjfsdfhsldf
-</div>
-
-<div class="col s4 card right">
-  hello fjksjfsjfd;afjkasfd;sajfadjfksad;fjasjfsajfsa;lfjl;asfjkfjdasjfsjfd;asfjkasjfasjdfjsa;lfjsfjfsdfhsldf
-
-</div>
-</div>
 

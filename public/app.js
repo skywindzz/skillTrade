@@ -1,4 +1,4 @@
-var app = angular.module('skillTrade', ['ngRoute']);
+var app = angular.module('skillTrade', ['ngRoute']); 
 
 app.config(function($routeProvider){
 	$routeProvider
@@ -10,20 +10,37 @@ app.config(function($routeProvider){
 
 	.when('/login', {
 		templateUrl: 'login/login.html',
-		controller: 'loginCtrl'
+		controller: 'loginCtrl' 
 	})
 
 	.when('/dash', {
-		templateUrl : 'dashboard/dash.html', // praram user id once log in
-		controller : 'dashCtrl'
-		// resolve : {
-		// 	//add method execute before going to this route grab user object 
-		// } 
+		templateUrl : 'dashboard/dash.html', 
+		controller : 'dashCtrl',
+		resolve : {
+			user: function(dashService) {
+				return dashService.getUser();
+			}
+		} 
+	}) 
+
+	.when('/dash/:id', {
+		templateUrl : 'dashboard/dash.html',
+		controller : 'dashCtrl',
+		resolve : {
+			user : function(dashService, $route) {
+				return dashService.getProfileUser($route.current.params.id);
+			}
+		}
 	})
 
 	.when('/search', {
 		templateUrl : 'search/search.html',
-		controller : 'searchCtrl'
+		controller : 'searchCtrl',
+		resolve : {
+			user : function(searchService) {
+				return searchService.getUser();
+			}
+		}		
 	})
 
 	.otherwise('/', {

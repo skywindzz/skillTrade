@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var q = require('q');
 
 var userSchema = new mongoose.Schema({
 	
@@ -53,21 +54,22 @@ userSchema.pre('save', function(next) {
 
 		bcrypt.hash(user.password, salt, function(err,hash) {
 			if (err) return next(err);
-
 			user.password = hash;
 			next(); 
 		});
 	});
 });	
 
-userSchema.methods.comparePassword = function(candidate, cb){
+userSchema.methods.comparePassword = function(password){
+	var deferred = q.defer();
 	var user = this;
-	bcrypt.compare(candidate, this.password, function(err, isMatch){
-		if (err) return cb(err);
-        	cb(null, isMatch);
+	bcrypt.compare(password, this.password, function(err, res){
+		if (err) {
+			deferred.resolve(err);
+		}
+        	deferred.resolve(res);
 	})
+	return deferred.promise;
 }
-
-
 
 module.exports = mongoose.model('User', userSchema);

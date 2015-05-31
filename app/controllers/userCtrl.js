@@ -3,7 +3,6 @@ var User = require('../models/User');
 module.exports = {
 
 	get: function(req, res) {
-			console.log('req.query:', req.query);
 			User.find(req.query)
 			.exec(function(err, result){
 			if (err) return status(500).send(err);
@@ -22,32 +21,49 @@ module.exports = {
 	},
 
 	update: function(req, res) {
-		User.findByIdAndUpdate(req.params.id, req.body, function(err, result){
+		User.findByIdAndUpdate(req.params._id, req.body, function(err, result){
 			if (err) return res.status(500).send(err);
 			res.send(result);
 		});
 	},
 
 	delete: function(req, res) {
+
 		User.findByIdAndRemove(req.params.id, function(err, result){
 			if(err) return res.status(500).send(err);
 			res.send(result);
 		});
 	},
 
-	login: function(req, res) {
-		User.findOne({email: req.query.email}, function(err, user){
-			console.log(user);
-			if(err) return res.status(500).end(err);
-			if(user){
 
-				user.comparePassword(req.query.password, function(err, isMatch){
-					console.log(isMatch);
-					if (isMatch) {
-					res.redirect('/#/dash');
-				}
-				})
-			}
+	addSkill: function(req, res) { 
+		console.log(req.user);
+		User.findByIdAndUpdate(req.user._id, {$push: { "skills" : req.body}}, {new : true},
+			function(err, result){
+			if(err) return res.status(500).send(err);
+			res.send(result);
 		})
+	},
+
+	newMessage: function(req, res) {
+		User.findByIdAndUpdate(req.user._id, {$push: {"message" : req.body}}, {new : true},
+			function(err, result){
+			if(err) return res.status(500).send(err);	
+			res.send(result);
+		})
+	},
+
+	getProfileUser: function(req, res) {
+		console.log(req.params);
+		User.findById(req.params.id, function(err, result){
+			console.log('userCtrl err', err);
+			if (err) return status(500).send(err);
+			res.send(result);
+		})
+	},
+
+
+	getUser: function(req, res) {
+		return res.send(req.user);
 	}
 }

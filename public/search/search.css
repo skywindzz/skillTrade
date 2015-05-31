@@ -19,3 +19,8 @@
   font-size: 2rem;
   transition: .3s color;
 }
+
+.cardspaces {
+  margin-left : 30px;
+  margin-right : 30px;
+}

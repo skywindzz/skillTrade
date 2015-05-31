@@ -1,16 +1,10 @@
-
-    <head ng-app="skillTrade">
-        <title>Login/Register page</title>
-    </head>
-    
-    <body ng-controller="loginCtrl">
-
-    <div class="container">    
+ 
+    <div class="container" ng-controller="loginCtrl">    
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">Sign In</div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a>Forgot password?</a></div>
+                        <!-- <div style="float:right; font-size: 80%; position: relative; top:-10px"><a>Forgot password?</a></div> -->
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
@@ -33,10 +27,8 @@
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 
-                                    <div class="col-sm-12 controls">
-                                      <a ng-click="login()" id="btn-login" class="btn btn-success">Login  </a>
-                                      <a id="btn-fblogin" href="/auth/facebook" class="btn btn-primary">Login with Facebook</a>
-
+                                    <div class="controls">
+                                      <a ng-click="login()" id="btn-login" class="btn btn-success waves-effect">Login</a>
                                     </div>
                                 </div>
 
@@ -105,17 +97,17 @@
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" ng-click="register()" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                                        <span style="margin-left:8px;">or</span>  
+                                        <button id="btn-signup" ng-click="register()" type="button" class="btn waves-effect btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <!-- <span style="margin-left:8px;">or</span>  --> 
                                     </div>
                                 </div>
                                 
-                                <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
+                                <!-- <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
                                     
                                     <div class="col-md-offset-3 col-md-9">
                                         <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
                                     </div>                  
-                                </div>      
+                                </div>   -->    
                             </form>
                          </div>
                     </div>                
@@ -125,5 +117,4 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../index/js/materialize.js"></script>
     <script src="../index/js/init.js"></script>
-    </body>
-
+   
