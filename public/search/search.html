@@ -9,7 +9,7 @@
 </form>
 <div class="container center">
 <ul class="row" ng-repeat="user in users">
-	<div  ng-repeat="skill in user.skills | filter : {name : nameSearch}">
+	<div ng-repeat="skill in user.skills | filter : {name : nameSearch}">
 		<a ng-href="/#/dash/{{user._id}}"><li class="flow-text card col s5 cardspaces center-align waves-effect wave-red spaces">Skill : {{skill.name}} </br> Level : {{skill.level}}</li></a>
 	</div>
 </ul>

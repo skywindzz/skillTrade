@@ -1,12 +1,12 @@
 var app = angular.module('skillTrade');
-
+ 
 app.service('loginService', function($http, $q){
 
 	this.register = function(user) {
 		var deferred = $q.defer();
 		$http ({
 			method: "POST",
-			url: '/api/users',
+			url: '/api/users', 
 			data: user
 		}).then(function(response){
 			deferred.resolve(response.data);
@@ -15,7 +15,7 @@ app.service('loginService', function($http, $q){
 	}
 
 	this.login = function(user){
-		console.log(user);
+		console.log("user from loginService", user);
 		var deferred = $q.defer();
 		$http ({
 			method: "POST",
@@ -23,6 +23,7 @@ app.service('loginService', function($http, $q){
 			data: user
 		}).then(function(response){
 			deferred.resolve(response.data);
+			console.log(respnse.data);
 		})
 		return deferred.promise;
 	}

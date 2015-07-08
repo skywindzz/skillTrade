@@ -3,10 +3,9 @@ var app = angular.module('skillTrade');
 app.controller('dashCtrl', function($scope, $http, dashService, user){
   $scope.user = user;
   console.log($scope.user);
-
-
+  console.log($scope.user.message);
 // MISSING FUNCTION: adding skill will also add that skill into the search page
-
+  
   $scope.addSkill = function(skillsName, skillsLevel, skillsDescription){
   	var skill = { 
   			name : skillsName,
@@ -25,28 +24,25 @@ app.controller('dashCtrl', function($scope, $http, dashService, user){
 
  
 // MISSING FUNCTION: function that adds message to the sender and receiver's message array
-  $scope.newMessage = function(name, senderId, message){
+  $scope.newMessage = function(message){
     var message = {
-        name : name,
-        senderId : senderId,
         message : message
     }
 
   	dashService.newMessage(message).then(function(res){
   		console.log('message from dashCtrl', res);
       user.message.push(message);
-      message = {};
       $scope.message = '';
-  		$scope.user.message.push($scope.user);
   	})
   }
 
-  //accordion jquery code
-
- $(document).ready(function(){
-    $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+//accordion jquery code
+$(document).ready(function(){
+      $('.collapsible').collapsible({
+      accordion : false  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   });
-}); 
+})
 
+
+ 

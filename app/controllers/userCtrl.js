@@ -46,6 +46,7 @@ module.exports = {
 	},
 
 	newMessage: function(req, res) {
+		console.log(req.message);
 		User.findByIdAndUpdate(req.user._id, {$push: {"message" : req.body}}, {new : true},
 			function(err, result){
 			if(err) return res.status(500).send(err);	

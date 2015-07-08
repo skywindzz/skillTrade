@@ -6,15 +6,16 @@
   <title></title>
 
   <!-- CSS  -->
-  <link href="index/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="index/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <ng-view></ng-view>  
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="index/js/materialize.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
   <script src="index/js/init.js"></script>
   
   <!-- Angular -->
@@ -29,9 +30,13 @@
   <script src="login/loginService.js"></script>
   <!--dashboard!-->
   <script src="dashboard/dashCtrl.js"></script>
-   <script src="dashboard/dashService.js"></script>
+  <script src="dashboard/dashService.js"></script>
+  
   <!--search !-->
   <script src="search/searchCtrl.js"></script>
   <script src="search/searchService.js"></script>
+  <!--searchResult !-->
+  <script src="searchResult/searchResultCtrl.js" type="text/javascript"></script>
+  <script src="searchResult/searchResultService.js" type="text/javascript"></script>
   </body>
 </html>

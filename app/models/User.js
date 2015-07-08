@@ -39,6 +39,8 @@ var userSchema = new mongoose.Schema({
 					{
 						name : { type: String },
 						senderId : { type : mongoose.Schema.Types.ObjectId, ref : 'User'},
+						//need a receiver id here, shoud I take message out and make it
+						//as it's own schema?
 						message : { type : String }
 					}
 				]		 	

@@ -8,7 +8,6 @@ app.controller('loginCtrl', function($scope, loginService, $location){
 	$scope.user.first;
 	$scope.user.last;
 	$scope.user.password;
-
 	//login function
 	$scope.login = function(){
 		loginService.login($scope.user)

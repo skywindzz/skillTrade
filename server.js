@@ -74,7 +74,7 @@ var requireAuth = function(req, res, next) {
 	}
 	return next();
 }
- 
+  
 app.get('/api/profile/:id', function (req, res){
   console.log("Server.js", req.params.id)
   User.findById(req.params.id, function(err, result){
