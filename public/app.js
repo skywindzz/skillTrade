@@ -45,7 +45,12 @@ app.config(function($routeProvider) {
 
     .when('/searchresult/:id', {
         templateUrl: 'searchResult/searchResult.html',
-        controller: 'searchResultCtrl'
+        controller: 'searchResultCtrl',
+        resolve: {
+            searchUser: function(searchResultService, $route){
+                return searchResultService.getSearchResultUser($route.current.params.id);
+            }
+        }
     })
 
     .otherwise('/', {

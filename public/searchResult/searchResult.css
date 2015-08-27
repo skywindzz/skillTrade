@@ -1,0 +1,22 @@
+.userimage{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /*don't forget prefixes*/
+  background-position: center center;
+  /* as mentioned by Vad: */
+  background-size: cover;
+  margin-left: 50px;
+}
+
+.row .col.s4 {
+	margin-left: 30px;
+}
+
+.row {
+	display: flex;
+	justify-content: center;
+}
+
+.skillbutton {
+	margin-top: 15px;
+}

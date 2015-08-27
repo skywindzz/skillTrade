@@ -63,6 +63,15 @@ module.exports = {
 		})
 	},
 
+	getSearchResultUser: function(req, res) {
+		console.log(req.params);
+		User.findById(req.params.id, function(err, result){
+			console.log('userCtrl err', err);
+			if (err) return status(500).send(err);
+			res.send(result);
+		})
+	},
+
 
 	getUser: function(req, res) {
 		return res.send(req.user);

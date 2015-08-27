@@ -100,8 +100,15 @@ app.post('/api/login/auth',
   res.end();
 });
 
-//endpoint for search operations
-
+//endpoint for search result operations
+app.get('/api/searchresultuser/:id',  function (req, res){
+  console.log("Server.js searchresult", req.params.id)
+  User.findById(req.params.id, function(err, result){
+      console.log('searchresult err', err);
+      if (err) return status(500).send(err);
+      res.send(result);
+    })  
+})
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {

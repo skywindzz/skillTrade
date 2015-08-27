@@ -7,10 +7,11 @@
 			<i class="mdi-navigation-close close"></i>
 		</div>
 </form>
-<div class="container center">
+
+<div class="container">
 <ul class="row" ng-repeat="user in users">
 	<div ng-repeat="skill in user.skills | filter : {name : nameSearch}">
-		<a ng-href="/#/dash/{{user._id}}"><li class="flow-text card col s5 cardspaces center-align waves-effect wave-red spaces">Skill : {{skill.name}} </br> Level : {{skill.level}}</li></a>
+		<a ng-href="/#/searchresult/{{user._id}}"><li class="flow-text card col s12 center-align hoverable waves-effect wave-red spaces">Skill : {{skill.name}} </br> Level : {{skill.level}}</li></a>
 	</div>
 </ul>
 </div>

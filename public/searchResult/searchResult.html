@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="searchResult/searchResult.css">
+<div>
+<!-- NAVBAR !-->
+<nav class="yellow lighten-2 col s12"  role="navigation">
+    <div class="nav-wrapper container">
+        <a href="" class="collection-item blackfont">Dashboard</a>
+
+        <a id="logo-container" href="/#/" class="brand-logo center">SkillTrade</a>
+
+        <div class="right"><a href="/#/search" class="blackfont">Search</a></div>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="/#/login">Login/Register</a></li>
+        </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+</nav>
+
+<!-- PROFILE !-->
+
+<div class="row">
+  <div class="col s3 card medium left">
+    <h4 class="center">Profile</h4>
+    <img class="userimage responsive-img" src="https://lh3.googleusercontent.com/-PwaQQTIXjYY/AAAAAAAAAAI/AAAAAAAAAAA/CsAdrY7CRfk/photo.jpg"> 
+    <ul> 
+       <li class="center">You are at {{user.first}} {{user.last}}'s skill page</li>
+    </ul>
+  </div>
+      
+
+<!-- MESSAGE SECTION !-->
+
+  <div class="col s4 card right">
+
+    <div class="center s12 card" ng-repeat="messages in user.message">
+          <h5> Message : {{messages.message}}</h5>
+          <div class="right">
+                <i class="material-icons md-18">replay</i>
+          </div>
+    </div>
+    <div class="col s12 card center">
+      <div class="message input-field"> 
+              <textarea id="textarea2" class="materialize-textarea" ng-model="message"></textarea>
+              <label for="textarea2" id="message">Send message to {{user.first}}</label>
+       </div>
+    </div>
+      <div class="footer">  
+      <!-- need to get sender's ID !-->
+        <button type="submit" ng-click="newMessage(message)" class="footer skillbutton btn-floating right btn-small waves-effect waves-light blue"><i class="mdi-content-add"></i></button>
+      </div>
+  </div>
+</div>
+</div>
+
+
