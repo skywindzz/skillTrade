@@ -36,6 +36,11 @@ app.controller('dashCtrl', function($scope, $http, dashService, user){
   	})
   }
 
+//file uploads
+// $scope.$watch('files', function(){
+//   $scope.upload($scope.files);
+// });
+
 //accordion jquery code
 $(document).ready(function(){
       $('.collapsible').collapsible({

@@ -104,7 +104,6 @@ app.post('/api/login/auth',
 app.get('/api/searchresultuser/:id',  function (req, res){
   console.log("Server.js searchresult", req.params.id)
   User.findById(req.params.id, function(err, result){
-      console.log('searchresult err', err);
       if (err) return status(500).send(err);
       res.send(result);
     })  

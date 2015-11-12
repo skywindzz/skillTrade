@@ -12,4 +12,17 @@ app.service('searchResultService', function($http, $q) {
     })
     return deferred.promise;
   }
-})
+
+  	this.newMessage = function(message) {
+  		var deferred = $q.defer();
+  		console.log('Message from searchResultService', message);
+		$http({
+			method: 'POST',
+			url: 'api/users/message',
+			data: message
+		}).then(function(response){
+			deferred.resolve(response.data);
+		})  		
+			return deferred.promise;
+  	}
+});

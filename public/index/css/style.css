@@ -15,6 +15,10 @@ p {
   line-height: 2rem;
 }
 
+.parallax-logo {
+  color: #686868;
+}
+
 .blackfont {
   color: black;
 }

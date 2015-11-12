@@ -5,6 +5,18 @@ app.controller('searchResultCtrl', function($scope, $http, $routeParams, searchR
 		console.log($scope.user);
 		console.log("hello world")
 
+		$scope.newMessage = function(message) {
+			var message = {
+				message : message
+			}
+
+		  searchResultService.newMessage(message).then(function(res){
+			console.log('message from searchResultCtrl', res);
+			searchUser.message.push(message);
+			$scope.message = '';
+		  })
+		}
+
 		/* write a function use searchID and go back to
 		fill get user using searchID
 		 /* write a function that takes you back to 

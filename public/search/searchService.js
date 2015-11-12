@@ -12,8 +12,6 @@ app.service('searchService', function($http, $q){
 		})
 		return deferred.promise;
 	}
-
-
 	
 	//write a function here concatonate a link with user id and take current user into that 
 	//skill owner's profile 
