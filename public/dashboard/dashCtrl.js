@@ -42,8 +42,8 @@ app.controller('dashCtrl', function($scope, $http, dashService, user){
 // });
 
 //accordion jquery code
-$(document).ready(function(){
-      $('.collapsible').collapsible({
+   angular.element(document).ready(function(){
+      angular.element('.collapsible').collapsible({
       accordion : false  // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   });

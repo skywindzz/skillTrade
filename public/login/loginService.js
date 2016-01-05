@@ -23,7 +23,7 @@ app.service('loginService', function($http, $q){
 			data: user
 		}).then(function(response){
 			deferred.resolve(response.data);
-			console.log(respnse.data);
+			console.log(response.data);
 		})
 		return deferred.promise;
 	}
