@@ -83,8 +83,19 @@ app.get('/api/profile/:id', function (req, res){
       res.send(result);
     })  
 })
+
 //endpoint for getting user data after login
 app.get('/api/login/user', UserCtrl.getUser);
+
+//endpoint for loggin user out 
+app.get('/api/logout', function (req, res, next){
+  console.log("logout endpoint hit");
+  req.session.destroy(function (err) {
+    res.clearCookie('connect.sid'); 
+    res.redirect('/'); 
+  });
+});
+
 
 //endpoint for User op
 app.get('/api/users', UserCtrl.get);

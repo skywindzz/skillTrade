@@ -9,6 +9,7 @@
 nav ul a,
 nav .brand-logo {
   color: #444;
+  font-family: Helvetica Neue;
 }
 
 p {
@@ -16,7 +17,7 @@ p {
 }
 
 .parallax-logo {
-  color: #686868;
+  color: paleturquoise;
 }
 
 .blackfont {

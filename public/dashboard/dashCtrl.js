@@ -36,6 +36,9 @@ app.controller('dashCtrl', function($scope, $http, dashService, user){
   	})
   }
 
+  $scope.logout = function() { 
+     dashService.logout();
+  }
 //file uploads
 // $scope.$watch('files', function(){
 //   $scope.upload($scope.files);

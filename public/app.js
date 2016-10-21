@@ -52,7 +52,11 @@ app.config(function($routeProvider) {
             }
         }
     })
-
+    
+    .when('/logout', {
+        redirectTo: '/index/homeTemp.html'
+    })
+    
     .otherwise('/', {
         redirectTo: '/index/homeTemp.html'
 

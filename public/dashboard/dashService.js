@@ -56,5 +56,14 @@ app.service('dashService', function($http, $q) {
 		})
 		return deferred.promise;
 	}
+    
+    this.logout = function() {
+        $http({
+           method : 'GET',
+           url : 'api/logout'
+        }).then(function(response){
+            console.log("you are logged out");
+        })
+    }
 });
 
