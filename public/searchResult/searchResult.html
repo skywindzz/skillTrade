@@ -20,8 +20,8 @@
 <!-- PROFILE !-->
 
 <div class="row">
-  <div class="col s3 card medium left">
-    <h4 class="center">Profile</h4>
+  <div class="col s6 card medium center left">
+    <h3 class="center">Profile</h3>
     <img class="userimage responsive-img" src="https://lh3.googleusercontent.com/-PwaQQTIXjYY/AAAAAAAAAAI/AAAAAAAAAAA/CsAdrY7CRfk/photo.jpg"> 
     <ul> 
        <li class="center">You are at {{user.first}} {{user.last}}'s skill page</li>
@@ -31,7 +31,7 @@
 
 <!-- MESSAGE SECTION !-->
 
-  <div class="col s4 card right">
+  <div class="col s6 card right">
 
     <div class="center s12 card" ng-repeat="messages in user.message">
           <h5> Message : {{messages.message}}</h5>
@@ -44,11 +44,12 @@
               <textarea id="textarea2" class="materialize-textarea" ng-model="message"></textarea>
               <label for="textarea2" id="message">Send message to {{user.first}}</label>
        </div>
-    </div>
-      <div class="footer">  
+
+       <div class="footer">  
       <!-- need to get sender's ID !-->
         <button type="submit" ng-click="newMessage(message)" class="footer skillbutton btn-floating right btn-small waves-effect waves-light blue"><i class="mdi-content-add"></i></button>
       </div>
+    </div>
   </div>
 </div>
 </div>
